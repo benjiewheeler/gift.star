@@ -4,6 +4,7 @@
     "version": "1.0.0",
     "description": "Smart contract for creating secure claim links for fungible tokens",
     "scripts": {
+        "postinstall": "bun install -y --ignore-scripts",
         "build:dev": "cd contract; blanc++ -I include src/gift_star.cpp",
         "build:prod": "cd contract; cdt-cpp -I include src/gift_star.cpp"
     },

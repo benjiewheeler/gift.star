@@ -1,0 +1,29 @@
+{
+    "name": "gift.star",
+    "type": "module",
+    "version": "1.0.0",
+    "description": "Smart contract for creating secure claim links for fungible tokens",
+    "scripts": {
+        "build:dev": "cd contract; blanc++ -I include src/gift_star.cpp",
+        "build:prod": "cd contract; cdt-cpp -I include src/gift_star.cpp"
+    },
+    "keywords": [
+        "antelope",
+        "smart",
+        "contract"
+    ],
+    "author": {
+        "name": "Benjie",
+        "email": "benjiewheeler@protonmail.com",
+        "url": "https://github.com/benjiewheeler"
+    },
+    "devDependencies": {
+        "@proton/vert": "^0.3.22",
+        "@wharfkit/antelope": "^1.0.2",
+        "bun-types": "latest",
+        "proton-tsc": "^0.3.58"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    }
+}

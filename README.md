@@ -1,8 +1,8 @@
 # gift.star
 
-Smart contract for creating secure claim links for fungible tokens.
+Smart contract for creating secure claim links for fungible tokens on the WAX blockchain.
 
-This contract is designed to mimic the functionality of the [atomictoolsx](https://waxblock.io/account/atomictoolsx) contract.
+This contract is inspired by the [atomictoolsx](https://waxblock.io/account/atomictoolsx) contract.
 
 ## Features
 
@@ -17,7 +17,7 @@ This repo uses [Bun](https://bun.sh/) for running tasks and testing, (can be rep
 
 The contract is fully tested using proton's [VeRT](https://docs.protonchain.com/contract-sdk/testing.html)
 
--   To build the contract for testing [blanc](https://github.com/haderech/blanc) is required.
+-   [blanc](https://github.com/haderech/blanc) is required for building the contract for testing.
 
 ```bash
 bun install # or yarn or pnpm
@@ -27,10 +27,10 @@ bun test
 
 ## Deployment
 
--   To build & deploy the contract, both of the Antelope [cdt](https://github.com/AntelopeIO/cdt) and [leap](https://github.com/AntelopeIO/leap) are required.
+-   Antelope [cdt](https://github.com/AntelopeIO/cdt) and [leap](https://github.com/AntelopeIO/leap) are required for building & deploying the contract.
 
 ```bash
-bun build:prod # to compile the contract using cdt-cpp
+bun run build:prod # to compile the contract using cdt-cpp
 
 # deploy the contract
 cleos -u <your_api_endpoint> set contract <account> $PWD contract/gift_star.wasm contract/gift_star.abi -p <account>@active

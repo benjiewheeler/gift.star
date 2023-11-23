@@ -94,7 +94,7 @@
                 <AlertDialog.Title>Congratulations</AlertDialog.Title>
                 <AlertDialog.Description>
                     <div class="flex flex-col gap-2">
-                        <p class="font-saira rounded bg-green-700 p-2 text-center font-semibold text-white">Link claimed successfully</p>
+                        <p class="rounded bg-green-700 p-2 text-center font-saira font-semibold text-white">Link claimed successfully</p>
                     </div>
                 </AlertDialog.Description>
             </AlertDialog.Header>
@@ -106,7 +106,7 @@
 
     <div class="container flex max-w-screen-sm flex-col gap-8">
         {#if invalidLinkId}
-            <p class="font-saira text-destructive text-center font-medium sm:text-lg lg:text-xl">Invalid link</p>
+            <p class="text-center font-saira font-medium text-destructive sm:text-lg lg:text-xl">Invalid link</p>
         {:else if loadingLinkInfo}
             <div class="flex flex-col gap-2 py-4">
                 <Skeleton class="h-[32px] w-full" />
@@ -129,12 +129,12 @@
 
                 {#if invalidPrivateKey}
                     <div class="my-4 flex flex-col gap-2">
-                        <p class="bg-destructive rounded p-2 text-center">You cannot claim this link because you did not use a valid key</p>
+                        <p class="rounded bg-destructive p-2 text-center">You cannot claim this link because you did not use a valid key</p>
                     </div>
                 {/if}
                 {#if !linkInfo?.tokens_transferred}
                     <div class="my-4 flex flex-col gap-2">
-                        <p class="bg-destructive rounded p-2 text-center">
+                        <p class="rounded bg-destructive p-2 text-center">
                             You cannot claim this link because the owner has not transferred the tokens yet
                         </p>
                     </div>
@@ -158,9 +158,9 @@
                     </div>
                 </div>
 
-                <div class="border-muted my-4 flex flex-row items-center justify-center gap-2 rounded-xl border">
+                <div class="my-4 flex flex-row items-center justify-center gap-2 rounded-xl border border-muted">
                     <p
-                        class="font-saira bg-gradient-to-r from-cyan-600 to-fuchsia-600 bg-clip-text py-8 text-2xl font-bold text-transparent sm:text-3xl lg:text-4xl"
+                        class="bg-gradient-to-r from-cyan-600 to-fuchsia-600 bg-clip-text py-8 font-saira text-2xl font-bold text-transparent sm:text-3xl lg:text-4xl"
                     >
                         {linkInfo?.token?.quantity.value}
                         {linkInfo?.token?.quantity.symbol.code}

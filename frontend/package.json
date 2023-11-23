@@ -1,0 +1,46 @@
+{
+    "name": "kit",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "dev": "vite dev",
+        "build": "vite build",
+        "preview": "vite preview",
+        "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+        "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+        "lint": "prettier --check .",
+        "format": "prettier --write ."
+    },
+    "dependencies": {
+        "@wharfkit/contract": "^1.1.1",
+        "@wharfkit/session": "^1.1.1",
+        "@wharfkit/transact-plugin-autocorrect": "^1.1.0",
+        "@wharfkit/wallet-plugin-anchor": "^1.1.0",
+        "@wharfkit/wallet-plugin-cloudwallet": "^1.1.0",
+        "@wharfkit/wallet-plugin-wombat": "^1.1.0",
+        "@wharfkit/web-renderer": "^1.1.1",
+        "bits-ui": "^0.9.8",
+        "clsx": "^2.0.0",
+        "cmdk-sv": "^0.0.12",
+        "lucide-svelte": "^0.292.0",
+        "tailwind-merge": "^2.0.0",
+        "tailwind-variants": "^0.1.18"
+    },
+    "devDependencies": {
+        "@sveltejs/adapter-auto": "^2.0.0",
+        "@sveltejs/kit": "^1.27.4",
+        "autoprefixer": "^10.4.14",
+        "postcss": "^8.4.24",
+        "postcss-load-config": "^4.0.1",
+        "prettier": "^3.0.0",
+        "prettier-plugin-svelte": "^3.0.0",
+        "prettier-plugin-tailwindcss": "^0.5.4",
+        "svelte": "^4.2.7",
+        "svelte-check": "^3.6.0",
+        "tailwindcss": "^3.3.2",
+        "tslib": "^2.4.1",
+        "typescript": "^5.0.0",
+        "vite": "^4.4.2"
+    },
+    "type": "module"
+}

@@ -160,6 +160,11 @@ gift_star::receivetoken(name from, name to, asset quantity, string memo)
             break;
         }
 
+        // skip links that have been funded
+        if (itr->tokens_transferred) {
+            continue;
+        }
+
         // check if the link is from this sender, and with the same contract
         if (itr->creator == from && itr->token.contract == get_first_receiver() && itr->token.get_extended_symbol().get_symbol() == quantity.symbol) {
             found = true;

@@ -8,6 +8,7 @@
     import type { Types } from "$lib/contract";
     import { Contract as GiftStarContract } from "$lib/contract";
     import { login, session, transact } from "$lib/store";
+    import ContractKit from "@wharfkit/contract";
     import { APIClient, Bytes, PrivateKey, PublicKey } from "@wharfkit/session";
     import { onMount } from "svelte";
 
@@ -39,10 +40,8 @@
         if (!$session || !privKey) {
             return;
         }
-
-        const giftStar = new GiftStarContract({
-            client: new APIClient({ url: API_NODE_URL }),
-        });
+        const client = new APIClient({ url: API_NODE_URL });
+        const giftStar = new GiftStarContract({ client });
 
         const actions = [
             giftStar.action(
@@ -55,6 +54,20 @@
                 { authorization: [$session.permissionLevel] }
             ),
         ];
+
+        // fetch the token contract info
+        // check if it has an "open" action
+        // call that action to open a row for the user and avoid consuming the contract's ram
+        const contract = await new ContractKit({ client }).load(linkInfo!.token.contract!);
+        if (contract?.actionNames?.includes("open")) {
+            actions.unshift(
+                contract.action(
+                    "open",
+                    { owner: $session.actor, ram_payer: $session.actor, symbol: linkInfo!.token.quantity.symbol },
+                    { authorization: [$session.permissionLevel] }
+                )
+            );
+        }
 
         try {
             alertOpen = false;

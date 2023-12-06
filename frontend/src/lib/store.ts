@@ -1,5 +1,20 @@
+import { browser } from "$app/environment";
 import { goto } from "$app/navigation";
-import { Chains, SessionKit, type AnyAction, type Session } from "@wharfkit/session";
+import {
+    Chains,
+    LoginContext,
+    SessionKit,
+    TransactContext,
+    type AnyAction,
+    type LoginOptions,
+    type PromptArgs,
+    type Session,
+    type UserInterface,
+    PermissionLevel,
+    Checksum256,
+    type Cancelable,
+    type PromptResponse,
+} from "@wharfkit/session";
 import { TransactPluginAutoCorrect } from "@wharfkit/transact-plugin-autocorrect";
 import { WalletPluginAnchor } from "@wharfkit/wallet-plugin-anchor";
 import { WalletPluginCloudWallet } from "@wharfkit/wallet-plugin-cloudwallet";
@@ -14,12 +29,14 @@ const sessionKit = new SessionKit(
     {
         appName: "gift.star",
         chains: [Chains.WAX],
-        ui: new WebRenderer(),
-        walletPlugins: [new WalletPluginAnchor(), new WalletPluginCloudWallet(), new WalletPluginWombat()],
+        // use undefined as the ui when the browser variable is false to enable SSR
+        // ignore the warning to silence the TS transpiler
+        // @ts-ignore
+        ui: browser ? new WebRenderer() : undefined,
+        // use an empty array as the plugins when the browser variable is false to enable SSR
+        walletPlugins: browser ? [new WalletPluginAnchor(), new WalletPluginCloudWallet(), new WalletPluginWombat()] : [],
     },
-    {
-        transactPlugins: [new TransactPluginAutoCorrect()],
-    }
+    { transactPlugins: [new TransactPluginAutoCorrect()] }
 );
 
 export async function login() {
